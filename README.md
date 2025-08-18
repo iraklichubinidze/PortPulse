@@ -17,13 +17,13 @@ Turn raw Nmap output into actionable insights — **without manual effort**.
 ## 🐍 Installation
 
 1. Clone the repository:  
-```
+```bash
 git clone https://github.com/iraklichubinidze/PortPulse.git
 cd PortPulse
 ```
 
 2. Install dependencies:  
-```
+```bash
 pip install -r requirements.txt
 ```
 
@@ -40,7 +40,7 @@ pip install -r requirements.txt
 ## 🚀 Usage
 
 Run the tool manually:  
-```
+```bash
 python main.py
 ```
 
@@ -48,96 +48,59 @@ python main.py
 - Saves HTML report to `output/scan_report.html`  
 - Emails the report if SMTP is configured  
 
-```
 
 ## 🕖 Automate with Cronjobs
 
 Run **PortPulse** automatically every day at 7:00 AM
 
 1. Open crontab:  
-```
+```bash
 crontab -e
 ```
 
 2. Add this line:  
-```
+```bash
 0 7 * * * /usr/bin/python3 /path/to/PortPulse/main.py >> /path/to/PortPulse/cron.log 2>&1
 ```
 
 This runs the script daily at 7:00 AM and logs output to `cron.log`.  
 
-```
 
 ## ⚙️ Configuration (`config.py`)
 
 ### Nmap settings
-```
+```python
 NMAP_PING_SCAN_OPTIONS = ["-sn"]
 NMAP_SCAN_OPTIONS = ["-sV", "-p-", "--open"]
 ```
-
 - Ping scan discovers live hosts quickly.  
 - Full port scan with service/version detection shows **open ports only**.  
 
 ### Output filtering
-```
+```python
 ENABLE_OUTPUT_FILTERING = True
 FILTER_KEYWORDS = ["tcpwrapped"]
 ```
-
 - Filters out `"tcpwrapped"` lines, which typically indicate **firewall-protected ports**, keeping reports clean and relevant.  
 
-### Paths
-```
-INPUT_FILE = "ips.txt"
-OUTPUT_DIR = "output"
-```
-
-- Fixed paths for input and output files.  
-
 ### Email settings
-```
+```python
 SMTP_SERVER = "smtp.office365.com"
 SMTP_PORT = 587
 SMTP_LOGIN = "<YOUR_SMTP_LOGIN>"
 SMTP_PASSWORD = os.getenv("SMTP_PASSWORD", "")
 SENDER_EMAIL = "<SENDER_EMAIL>"
-RECEIVER_EMAILS = ["list@example.com"]
+RECEIVER_EMAILS = ["<ADD_EMAIL_1>","<ADD_EMAIL_2>"]
 EMAIL_SUBJECT = "Daily NetScan"
 ```
-
 - Configure your SMTP credentials to automatically send reports.  
-- **Security tip:** Set `SMTP_PASSWORD` as an environment variable:  
-```
+- **Security tip:** Set `SMTP_PASSWORD` as an environment variable (in ```~/.bashrc```):
+```bash
 export SMTP_PASSWORD="yourpassword"
 ```
 
-### Report settings
-```
-TEMPLATE_DIR = "templates"
-REPORT_TEMPLATE = "report_template.html"
-REPORT_OUTPUT_FILE = "scan_report.html"
-```
-
-- Defines template folder and report filename — required for report generation.  
-
-```
-
 ## 📂 Output
-
 - HTML report: `output/scan_report.html`  
 - Logs (optional if using cron)  
 
-```
 
-## 🧑‍💻 Why PortPulse?
-
-- Save time by automating **network discovery and reporting**  
-- Get **daily actionable insights** without opening terminals  
-- Lightweight, flexible, and easy to configure  
-
-```
-
-## 📌 License
-
-MIT License © [Your Name]  
