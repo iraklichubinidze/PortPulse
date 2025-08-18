@@ -22,3 +22,33 @@ Turn raw Nmap output into actionable insights — **without manual effort**.
 ```bash
 git clone https://github.com/yourusername/PortPulse.git
 cd PortPulse
+```
+2. Install dependencies:
+```bash
+pip install -r requirements.txt
+```
+3. Configure network and email settings in config.py:
+
+## 🚀 Usage
+### Run the tool manually:
+```bash
+python main.py
+```
+
+- Scans hosts listed in ips.txt
+- Saves HTML report to output/scan_report.html
+- Optionally emails the report if SMTP is configured
+
+## 🕖 Automate with Cronjobs
+
+Run **PortPulse** automatically every day at 7:00 AM:
+
+1. Open crontab:
+```bash
+crontab -e
+```
+2. Add this line:
+0 7 * * * /usr/bin/python3 /path/to/PortPulse/main.py >> /path/to/PortPulse/cron.log 2>&1
+
+- This runs the script daily at 7:00 AM and logs output to cron.log.
+
