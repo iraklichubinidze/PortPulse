@@ -18,7 +18,7 @@ Turn raw Nmap output into actionable insights — **without manual effort**.
 
 1. Clone the repository:  
 ```
-git clone https://github.com/yourusername/PortPulse.git
+git clone https://github.com/iraklichubinidze/PortPulse.git
 cd PortPulse
 ```
 
