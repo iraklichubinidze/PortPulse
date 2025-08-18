@@ -10,7 +10,7 @@ Turn raw Nmap output into actionable insights — **without manual effort**.
 
 - Discover live hosts and open ports with **Nmap**  
 - Generate **HTML reports** with summary boxes and charts  
-- **email delivery** via SMTP  
+-  **email delivery** via SMTP  
 - Fully configurable through `config.py`  
 - Compatible with **cronjobs** for automated daily scans  
 
