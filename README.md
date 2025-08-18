@@ -35,7 +35,7 @@ pip install -r requirements.txt
 
 4. Configure network and email settings in `config.py`.  
 
-```
+
 
 ## 🚀 Usage
 
