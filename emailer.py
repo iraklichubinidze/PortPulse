@@ -9,6 +9,7 @@ from config import (
     SMTP_PASSWORD,
     SENDER_EMAIL,
     RECEIVER_EMAILS,
+    EMAIL_SUBJECT
 )
 
 
@@ -20,6 +21,7 @@ def send_email(
     sender_email: str = SENDER_EMAIL,
     receiver_emails: list = RECEIVER_EMAILS,
     html_file: str = None,
+    email_subject: str = EMAIL_SUBJECT
 ):
     """
     Send an HTML email with the given report file attached as body.
@@ -39,7 +41,7 @@ def send_email(
         return False
 
     message = MIMEMultipart("alternative")
-    message["Subject"] = "Daily NetScan"
+    message["Subject"] = email_subject
     message["From"] = sender_email
     message["To"] = ", ".join(receiver_emails)
 
