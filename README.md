@@ -40,10 +40,10 @@ pip install -r requirements.txt
 ### Nmap settings
 ```python
 NMAP_PING_SCAN_OPTIONS = ["-sn"]
-NMAP_SCAN_OPTIONS = ["-sV", "-p-", "--open"]
+NMAP_SCAN_OPTIONS = ["-sV", "--open"]
 ```
 - Ping scan discovers live hosts quickly.  
-- Full port scan with service/version detection shows **open ports only**.  
+- Port scan with service/version detection shows **open ports only**.  
 
 ### Output filtering
 ```python
