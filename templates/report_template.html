@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Nmap Scan Results</title>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <style>
+        body { font-family: Arial, sans-serif; line-height: 1.6; margin: 20px; }
+        h1 { color: #333; }
+        table { width: 100%; border-collapse: collapse; margin-bottom: 20px; }
+        th, td { border: 1px solid #ddd; padding: 8px; text-align: left; }
+        th { background-color: #f4f4f4; font-weight: bold; }
+        tr:nth-child(even) { background-color: #f9f9f9; }
+        .summary-container { display: flex; gap: 20px; flex-wrap: wrap; margin-bottom: 20px; }
+        .summary-box { border: 1px solid #ccc; padding: 15px; border-radius: 8px; background: #f9f9f9; flex: 1; min-width: 200px; }
+        canvas { max-width: 400px; }
+        .critical-row { background-color: #ffcccc; }
+    </style>
+</head>
+<body>
+    <h1>Scan Results</h1>
+
+    <!-- Summary Section -->
+    {{ summary_html | safe }}
+
+    <!-- Graph -->
+    {{ chart_html | safe }}
+
+    {% if results %}
+        {% for ip, data in results.items() %}
+            <h2>Scan for: {{ ip }} ({{ data|length }} open ports)</h2>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Port</th>
+                        <th>State</th>
+                        <th>Service Version</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for port, state, service_version in data %}
+                    <tr>
+                        <td>{{ port }}</td>
+                        <td>{{ state }}</td>
+                        <td>{{ service_version }}</td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        {% endfor %}
+    {% else %}
+        <p>No open ports found on any scanned hosts.</p>
+    {% endif %}
+</body>
+</html>
