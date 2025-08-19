@@ -15,3 +15,4 @@ SMTP_LOGIN = "<YOUR_MAIL>" # Change this
 SMTP_PASSWORD = os.getenv("SMTP_PASSWORD", "") # You should add in .bashrc (export SMTP_PASSWORD="<PASSWORD_HERE>") 
 SENDER_EMAIL = "<SENDER>" # Change this
 RECEIVER_EMAILS = ["<MAIL1>", "<MAIL2>"] # Change This
+EMAIL_SUBJECT = "PortPulse - Daily NetScan"
