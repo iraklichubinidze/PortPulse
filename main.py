@@ -10,7 +10,8 @@ from config import (
     SMTP_LOGIN,
     SMTP_PASSWORD,
     SENDER_EMAIL,
-    RECEIVER_EMAILS
+    RECEIVER_EMAILS,
+    EMAIL_SUBJECT
 )
 
 logging.basicConfig(
@@ -36,7 +37,8 @@ def main():
         SMTP_PASSWORD,
         SENDER_EMAIL,
         RECEIVER_EMAILS,
-        html_report_path
+        html_report_path,
+        EMAIL_SUBJECT
     )
     logging.info("Email sent successfully.")
 
