@@ -1,5 +1,6 @@
 import subprocess
 import os
+from config import NMAP_SCAN_OPTIONS
 
 def get_live_ips(network):
     try:
@@ -59,8 +60,7 @@ def scan_ips(input_file, output_dir):
         for ip in live_ips:
             sanitized_ip = ip.replace("/", "_")
             output_file = os.path.join(output_dir, f"{sanitized_ip}.txt")
-
-            cmd = ["nmap", ip,"-sV","-p-","--open", "-oN", output_file]
+            cmd = ["nmap", ip] + NMAP_SCAN_OPTIONS + ["-oN", output_file]
             print(f"Running Nmap scan for IP: {ip}")
 
             subprocess.run(cmd, stdout=subprocess.DEVNULL)
