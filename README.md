@@ -2,7 +2,7 @@
 
 **PortPulse** is a lightweight **Python network scanning and reporting tool** designed for IT pros, sysadmins, and network engineers. It automatically discovers live hosts, detects open ports, generates clean HTML reports, and can optionally send them via email.  
 
-Turn raw Nmap output into actionable insights — **without manual effort**.  
+Turn raw Nmap output into actionable insights **without manual effort**.  
 
 
 ## ⚡ Features
